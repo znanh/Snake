@@ -19,11 +19,14 @@ class GameControl{
 
     init(){
         document.addEventListener('keydown',this.keydownHandler.bind(this))
+        this.food.change()
         this.run()
     }
 
     keydownHandler(event:KeyboardEvent){
-        this.direction = event.key
+        if(/Arrow[Up|Down|Left|Right]/.test(event.key)){
+            this.direction = event.key
+        }
     }
 
     run(){
@@ -81,7 +84,6 @@ class GameControl{
 
     checkEat(X: number ,Y: number){
         if(X === this.food.X && Y === this.food.Y) {
-            console.log('吃到食物了');
             this.food.change()
             this.scorePanel.addScore()
             this.snake.addBody()

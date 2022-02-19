@@ -20,7 +20,7 @@ class Food{
     change(){
         let left = Math.round(Math.random() * 29 ) * 10
         let top = Math.round(Math.random() * 29 ) * 10
-        for(let i = 1; i < this.snake.bodies.length; i++){
+        for(let i = 0; i < this.snake.bodies.length; i++){
             let bd = this.snake.bodies[i]
             if(left === bd.offsetLeft && top === bd.offsetTop){
                 this.change()
