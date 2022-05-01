@@ -46,13 +46,11 @@ class Snake{
     }
 
     moveBody(){
-        for(let i = this.bodies.length - 1 ; i > 0 ; i--){
-            let X = (this.bodies[i - 1] as HTMLElement).offsetLeft
-            let Y = (this.bodies[i - 1] as HTMLElement).offsetTop
-
-            ;(this.bodies[i] as HTMLElement).style.left = X + 'px'
-            ;(this.bodies[i] as HTMLElement).style.top = Y + 'px'
-        }
+        const length = this.bodies.length
+        const lastBody = this.bodies[length - 1]
+        lastBody.style.left = `${this.bodies[0].offsetLeft}px`
+        lastBody.style.top = `${this.bodies[0].offsetTop}px`
+        if (length > 2) this.element.insertBefore(lastBody, this.bodies[1])
     }
 
     checkHeadBody(){
